@@ -21,25 +21,41 @@ readMoreBtn.addEventListener("click", () => {
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".panel");
 
-// 2. Klick lyssnare på varje flick
+// 2. Funktion som visar en viss flik
+function showTab(panelId) {
+  // Nollställ : ta bort "active" från alla flikar och dölj alla paneler
+  tabs.forEach((t) => {
+    t.classList.remove("active");
+    t.setAttribute("aria-selected", "false");
+  });
+  panels.forEach((p) => (p.hidden = true));
+
+  // Aktivera rätt flik och visa panelen som hör till den
+  const tab = document.querySelector(`.tab[data-tab="${panelId}"]`);
+  tab.classList.add("active");
+  tab.setAttribute("aria-selected", "true");
+  document.getElementById(panelId).hidden = false;
+}
+
+// 3. Klick lyssnare på varje flik
 tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    // 3. Nollställ : ta bort "active" från alla flikar och dölj alla paneler
-    tabs.forEach((t) => {
-      t.classList.remove("active");
-      t.setAttribute("aria-selected", "false");
-    });
-    panels.forEach((p) => (p.hidden = true));
+  tab.addEventListener("click", () => showTab(tab.dataset.tab));
+});
 
-    // 4. Aktivera fliken man klickar på
-    tab.classList.add("active");
-    tab.setAttribute("aria-selected", "true");
-
-    // 5. Visa panelen som hör till fliken
-    const panelId = tab.dataset.tab; // t.ex " skills "
-    document.getElementById(panelId).hidden = false;
+// 4. "Kontakta mig" och "Kontakt" i menyn öppnar Kontakt-fliken
+document.querySelectorAll('a[href="#kontakt"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    showTab("kontakt");
+    document.querySelector(".content").scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#namn").focus({ preventScroll: true });
   });
 });
+
+// 5. Om någon kommer till sidan via länken .../#kontakt
+if (location.hash === "#kontakt") {
+  showTab("kontakt");
+}
 
 // MÖRKT LÄGE
 
