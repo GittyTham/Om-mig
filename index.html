@@ -36,6 +36,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Sätt mörkt läge direkt, innan sidan ritas, så den inte blinkar vitt -->
+    <script>
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -45,7 +55,7 @@
         <a href="https://github.com/GittyTham" target="_blank" rel="noopener">Projekt</a>
         <a href="#" aria-current="page">Om mig</a>
         <a href="#kontakt">Kontakt</a>
-        <button id="theme-toggle" type="button">Mörkt läge</button>
+        <button id="theme-toggle" type="button" aria-pressed="false">Mörkt läge</button>
       </nav>
     </header>
 
@@ -79,10 +89,12 @@
 
       <!-- Höger spalt - flikar -->
       <section class="content">
-        <div class="tabs" role="tablist">
+        <div class="tabs" role="tablist" aria-label="Om mig">
           <button
             class="tab active"
             data-tab="om"
+            id="tab-om"
+            aria-controls="om"
             role="tab"
             aria-selected="true"
           >
@@ -91,30 +103,44 @@
           <button
             class="tab"
             data-tab="skills"
+            id="tab-skills"
+            aria-controls="skills"
             role="tab"
             aria-selected="false"
+            tabindex="-1"
           >
             Skills
           </button>
           <button
             class="tab"
             data-tab="intressen"
+            id="tab-intressen"
+            aria-controls="intressen"
             role="tab"
             aria-selected="false"
+            tabindex="-1"
           >
             Intressen
           </button>
           <button
             class="tab"
             data-tab="kontakt"
+            id="tab-kontakt"
+            aria-controls="kontakt"
             role="tab"
             aria-selected="false"
+            tabindex="-1"
           >
             Kontakt
           </button>
         </div>
 
-        <div class="panel" id="om">
+        <div
+          class="panel"
+          id="om"
+          role="tabpanel"
+          aria-labelledby="tab-om"
+          tabindex="0">
           <h2>Lite om mig</h2>
           <p>
             Jag pluggar till UX Engineer och gillar mötet mellan design och kod.
@@ -127,7 +153,12 @@
             Läs mer
           </button>
         </div>
-        <div class="panel" id="skills" hidden>
+        <div
+          class="panel"
+          id="skills"
+          role="tabpanel"
+          aria-labelledby="tab-skills"
+          tabindex="0" hidden>
           <h2>Det jag jobbar med</h2>
           <ul class="skill-list">
             <li>HTML - Grundläggande</li>
@@ -135,7 +166,12 @@
             <li>JavaScript - Lär mig nu</li>
           </ul>
         </div>
-        <div class="panel" id="intressen" hidden>
+        <div
+          class="panel"
+          id="intressen"
+          role="tabpanel"
+          aria-labelledby="tab-intressen"
+          tabindex="0" hidden>
           <h2>Utanför studierna</h2>
           <ul class="interest-list">
             <li>Spela dataspel</li>
@@ -144,7 +180,12 @@
           </ul>
         </div>
 
-        <div class="panel" id="kontakt" hidden>
+        <div
+          class="panel"
+          id="kontakt"
+          role="tabpanel"
+          aria-labelledby="tab-kontakt"
+          tabindex="0" hidden>
           <h2>Säg hej</h2>
           <form id="contact-form" novalidate>
             <label for="namn">Namn</label>

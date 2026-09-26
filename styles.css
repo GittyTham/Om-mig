@@ -17,7 +17,7 @@
 }
 
 /* Mörkt Läge */
-body.dark {
+html.dark {
   --bg: #16151a;
   --surface: #201f25;
   --text: #f2efe8;

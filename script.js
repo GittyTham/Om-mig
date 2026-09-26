@@ -27,6 +27,7 @@ function showTab(panelId) {
   tabs.forEach((t) => {
     t.classList.remove("active");
     t.setAttribute("aria-selected", "false");
+    t.tabIndex = -1; // bara den aktiva fliken ska nås med Tab
   });
   panels.forEach((p) => (p.hidden = true));
 
@@ -34,12 +35,32 @@ function showTab(panelId) {
   const tab = document.querySelector(`.tab[data-tab="${panelId}"]`);
   tab.classList.add("active");
   tab.setAttribute("aria-selected", "true");
+  tab.tabIndex = 0;
   document.getElementById(panelId).hidden = false;
+  return tab;
 }
 
 // 3. Klick lyssnare på varje flik
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => showTab(tab.dataset.tab));
+});
+
+// 3b. Piltangenter mellan flikarna (som i vanliga appar)
+const tabList = [...tabs];
+document.querySelector(".tabs").addEventListener("keydown", (event) => {
+  const current = tabList.indexOf(document.activeElement);
+  if (current === -1) return;
+
+  let next;
+  if (event.key === "ArrowRight") next = (current + 1) % tabList.length;
+  else if (event.key === "ArrowLeft")
+    next = (current - 1 + tabList.length) % tabList.length;
+  else if (event.key === "Home") next = 0;
+  else if (event.key === "End") next = tabList.length - 1;
+  else return; // annan tangent: gör inget
+
+  event.preventDefault();
+  showTab(tabList[next].dataset.tab).focus();
 });
 
 // 4. "Kontakta mig" och "Kontakt" i menyn öppnar Kontakt-fliken
@@ -58,18 +79,27 @@ if (location.hash === "#kontakt") {
 }
 
 // MÖRKT LÄGE
-
+// (Själva startläget sätts redan i <head> så sidan inte blinkar)
 const themetoggle = document.querySelector("#theme-toggle");
 
-themetoggle.addEventListener("click", () => {
-  // Växla klassen "dark" på <body>
-  document.body.classList.toggle("dark");
-
-  // Kolla om mörkt läge är på just nu
-  const isDark = document.body.classList.contains("dark");
-
-  // Byt texten på knappen
+// Visa rätt text på knappen
+function updateThemeButton() {
+  const isDark = document.documentElement.classList.contains("dark");
   themetoggle.textContent = isDark ? "Ljust läge" : "Mörkt läge";
+  themetoggle.setAttribute("aria-pressed", isDark);
+}
+updateThemeButton();
+
+themetoggle.addEventListener("click", () => {
+  // Växla klassen "dark" på <html>
+  const isDark = document.documentElement.classList.toggle("dark");
+
+  // Spara valet så det finns kvar nästa gång
+  try {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  } catch (e) {}
+
+  updateThemeButton();
 });
 
 // TYPEWRITER
