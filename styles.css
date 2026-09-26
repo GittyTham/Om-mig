@@ -132,8 +132,21 @@ form {
     padding: 2rem 1.25rem;
   }
 
-  .tabs {
+  .site-header {
     flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .site-header nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+  }
+
+  .panel {
+    padding: 1.5rem;
   }
 }
 
@@ -216,6 +229,7 @@ form button {
   border-radius: 999px;
   font-size: 0.9375rem;
   font-weight: 600;
+  white-space: nowrap;
   text-decoration: none;
   border: 1px solid transparent;
   transition:
@@ -485,5 +499,12 @@ form button {
 @media (max-width: 50em) {
   .timeline-section {
     padding: 1rem 1.25rem 4rem;
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-self: stretch;
+    border-radius: var(--radius);
   }
 }
