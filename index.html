@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Om mig</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="#" class="logo">thamam<span class="logo-dot">.</span></a>
+      <nav>
+        <a href="#">Projekt</a>
+        <a href="#" aria-current="page">Om mig</a>
+        <a href="#">Kontakt</a>
+        <button id="theme-toggle" type="button">Mörkt Läge</button>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <!-- Vänster spalten: profil -->
+      <section class="profile">
+        <img
+          src="Oliver.jpeg"
+          alt="Porträtt av Oliver Tham"
+          class="profile-img"
+        />
+        <p class="eyebrow">Hej, jag heter</p>
+        <h1>Oliver Tham</h1>
+        <p class="role" aria-label="Jag är UX-student, kodare och designer">
+          <span aria-hidden="true"
+            >Jag är <span id="typewriter"></span
+            ><span class="cursor">|</span></span
+          >
+        </p>
+        <p class="intro">
+          UX Engineer-student på Chas Academy. Jag bygger gränssnitt som är
+          lätta att förstå och trevliga att använda.
+        </p>
+        <p class="location">Stockholm</p>
+        <div class="buttons">
+          <a href="#" class="btn btn-primary">Kontakta mig</a>
+          <a href="#" class="btn btn-secondary">Se mina projekt</a>
+        </div>
+      </section>
+
+      <!-- Höger spalt - flikar -->
+      <section class="content">
+        <div class="tabs" role="tablist">
+          <button
+            class="tab active"
+            data-tab="om"
+            role="tab"
+            aria-selected="true"
+          >
+            Om mig
+          </button>
+          <button
+            class="tab"
+            data-tab="skills"
+            role="tab"
+            aria-selected="false"
+          >
+            Skills
+          </button>
+          <button
+            class="tab"
+            data-tab="intressen"
+            role="tab"
+            aria-selected="false"
+          >
+            Intressen
+          </button>
+          <button
+            class="tab"
+            data-tab="kontakt"
+            role="tab"
+            aria-selected="false"
+          >
+            Kontakt
+          </button>
+        </div>
+
+        <div class="panel" id="om">
+          <h2>Lite om mig</h2>
+          <p>
+            Jag pluggar till UX Engineer och gillar mötet mellan design och kod.
+          </p>
+          <p class="more-text" hidden>
+            Jag har gjort/varit med på två hackathons. Ett var med Chas och ett
+            var med företaget Sogeti
+          </p>
+          <button id="read-more" type="button" aria-expanded="false">
+            Läs mer
+          </button>
+        </div>
+        <div class="panel" id="skills" hidden>
+          <h2>Det jag jobbar med</h2>
+          <ul class="skill-list">
+            <li>HTML - Grundläggande</li>
+            <li>CSS - Grundläggande</li>
+            <li>JavaScript - Lär mig nu</li>
+          </ul>
+        </div>
+        <div class="panel" id="intressen" hidden>
+          <h2>Utanför studierna</h2>
+          <ul class="interest-list">
+            <li>Spela dataspel</li>
+            <li>Umgås med kompisar</li>
+            <li>Kolla på film</li>
+          </ul>
+        </div>
+
+        <div class="panel" id="kontakt" hidden>
+          <h2>Säg hej</h2>
+          <form id="contact-form" novalidate>
+            <label for="namn">Namn</label>
+            <input type="text" id="namn" name="namn" required />
+
+            <label for="epost">E-post</label>
+            <input type="email" name="epost" id="epost" required />
+
+            <label for="meddelande">Meddelande</label>
+            <textarea
+              id="meddelande"
+              name="meddelande"
+              rows="4"
+              required
+            ></textarea>
+
+            <button type="submit">Skicka</button>
+            <p id="form-message" class="form-message" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

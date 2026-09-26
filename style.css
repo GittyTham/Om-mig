@@ -1,0 +1,404 @@
+/* Variablerna med färger */
+:root {
+  --bg: #f7f4ee;
+  --surface: #ffffff;
+  --text: #1d1b19;
+  --muted: #5f5a55;
+  --border: #e3ddd3;
+  --accent: #b4532a;
+  --btn-bg: #1d1b19;
+  --btn-text: #ffffff;
+  --error: #b3261e;
+  --success: #2f6f4e;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --radius: 1.5rem;
+}
+
+/* Mörkt Läge */
+body.dark {
+  --bg: #16151a;
+  --surface: #201f25;
+  --text: #f2efe8;
+  --muted: #a8a4a0;
+  --border: #35333b;
+  --accent: #e08a5f;
+  --btn-bg: #f2efe8;
+  --btn-text: #16151a;
+  --error: #f2a39c;
+  --success: #8fd3ad;
+}
+
+/* Grund */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Viktigt : gör så att hidden alltid döljer, även om vi sätter display på elementet */
+[hidden] {
+  display: none !important;
+}
+
+/* header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 4rem;
+}
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Huvud layout - två spalter */
+.layout {
+  display: grid;
+  grid-template-columns: 23.75rem 1fr;
+  gap: 4rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3.5rem 4rem;
+}
+
+/* vänster profil */
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.profile-img {
+  width: 11.25rem;
+  height: 11.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Höger - flikar */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.panel {
+  padding: 2.5rem;
+}
+
+/* FORMULÄRET */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 28.75rem;
+}
+
+/* MOBIL */
+
+@media (max-width: 800px) {
+  .site-header {
+    padding: 16px 20px;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 32px 20px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+  }
+}
+
+/* Typografi */
+h1,
+h2,
+.logo {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.intro,
+.location {
+  color: var(--muted);
+  margin: 0;
+}
+
+.intro {
+  font-size: 18px;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+.logo-dot {
+  color: var(--accent);
+}
+
+.site-header nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* KNAPPAR */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn,
+#theme-toggle,
+form button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    transform 0.15s,
+    opacity 0.15s;
+}
+
+.btn:hover,
+form button:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary,
+form button {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  align-self: flex-start;
+}
+
+.btn-secondary,
+#theme-toggle {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Syns när man tabbar med tangentbordet */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Flikar */
+.tabs {
+  align-self: flex-start;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.tab {
+  min-height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.tab:hover {
+  /* background: var(--btn-bg); */
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+/* PANELER */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.panel p {
+  font-size: 17px;
+  max-width: 620px;
+}
+
+.more-text {
+  color: var(--muted);
+}
+
+#read-more {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 600;
+}
+/* SKILLS SOM KORT */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.skill-list li {
+  padding: 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-weight: 600;
+}
+
+/* INTRESSEN SOM "PILLER" */
+.interest-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.interest-list li {
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+/* FORMULÄR */
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+input,
+textarea {
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+textarea {
+  resize: vertical;
+}
+form button {
+  margin-top: 12px;
+  border: 0;
+}
+
+@media (max-width: 800px) {
+  .skill-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Type writer */
+.role {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+#typewriter,
+.cursor {
+  color: var(--accent);
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Formulär meddelande */
+
+.form-message {
+  margin: 0.5rem;
+  font-weight: 600;
+}
+
+.form-message.error {
+  color: var(--error);
+}
+
+.form-message.success {
+  color: var(--success);
+}
