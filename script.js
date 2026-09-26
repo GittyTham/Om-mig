@@ -123,3 +123,26 @@ form.addEventListener("submit", (event) => {
   formMessage.className = "form-message success";
   form.reset();
 });
+
+// TIDSLINJEN
+const timeline = document.querySelector(".timeline");
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+// Slå på animationen (bara om JS fungerar)
+timeline.classList.add("animate");
+
+// Skapa en observatör som håller koll på vad som syns
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // slua titta, den ska bara tonas in en gång
+      }
+    });
+  },
+  { threshold: 0.3 },
+);
+
+// Be obesrvtören titta på varje punkt i tidslinjen
+timelineItems.forEach((item) => observer.observe(item));
