@@ -137,11 +137,12 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // slua titta, den ska bara tonas in en gång
+      } else {
+        entry.target.classList.remove("visible");
       }
     });
   },
-  { threshold: 0.3 },
+  { threshold: 1 },
 );
 
 // Be obesrvtören titta på varje punkt i tidslinjen
