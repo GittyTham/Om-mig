@@ -179,10 +179,10 @@ const timelineData = [
   },
   {
     year: 2021,
-    title: "Hackathon med Sogeti",
-    description: "Utforskade AI-chattbot och byggde prompts",
+    title: "Myrsjöskolan",
+    description: "Fritidsledare och elevassistent",
   },
-  { year: 2025, title: "Umeå Universitet", description: "Lärde mig C#" },
+  { year: 2024, title: "Umeå Universitet", description: "Lärde mig C#" },
   { year: 2025, title: "Gävle Universitet", description: "Lärde mig Java" },
 ];
 
