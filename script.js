@@ -27,7 +27,6 @@ function showTab(panelId) {
   tabs.forEach((t) => {
     t.classList.remove("active");
     t.setAttribute("aria-selected", "false");
-    t.tabIndex = -1; // bara den aktiva fliken ska nås med Tab
   });
   panels.forEach((p) => (p.hidden = true));
 
@@ -35,7 +34,6 @@ function showTab(panelId) {
   const tab = document.querySelector(`.tab[data-tab="${panelId}"]`);
   tab.classList.add("active");
   tab.setAttribute("aria-selected", "true");
-  tab.tabIndex = 0;
   document.getElementById(panelId).hidden = false;
   return tab;
 }
