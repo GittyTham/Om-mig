@@ -78,17 +78,17 @@ if (location.hash === "#kontakt") {
 
 // MÖRKT LÄGE
 // (Själva startläget sätts redan i <head> så sidan inte blinkar)
-const themetoggle = document.querySelector("#theme-toggle");
+const themeToggle = document.querySelector("#theme-toggle");
 
 // Visa rätt text på knappen
 function updateThemeButton() {
   const isDark = document.documentElement.classList.contains("dark");
-  themetoggle.textContent = isDark ? "Ljust läge" : "Mörkt läge";
-  themetoggle.setAttribute("aria-pressed", isDark);
+  themeToggle.textContent = isDark ? "Ljust läge" : "Mörkt läge";
+  themeToggle.setAttribute("aria-pressed", isDark);
 }
 updateThemeButton();
 
-themetoggle.addEventListener("click", () => {
+themeToggle.addEventListener("click", () => {
   // Växla klassen "dark" på <html>
   const isDark = document.documentElement.classList.toggle("dark");
 
@@ -220,7 +220,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 1 },
+  { threshold: 0.3 }, // gillar jag det inte byter jag till 1 igen
 );
 
 // Be obesrvtören titta på varje punkt i tidslinjen
