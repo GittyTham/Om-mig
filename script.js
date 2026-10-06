@@ -171,8 +171,42 @@ form.addEventListener("submit", (event) => {
 });
 
 // TIDSLINJEN
+const timelineData = [
+  {
+    year: 2026,
+    title: "Började på Chas Academy",
+    description: "Startade på UX Engineer-utbildningen",
+  },
+  {
+    year: 2021,
+    title: "Hackathon med Sogeti",
+    description: "Utforskade AI-chattbot och byggde prompts",
+  },
+  { year: 2025, title: "Umeå Universitet", description: "Lärde mig C#" },
+  { year: 2025, title: "Gävle Universitet", description: "Lärde mig Java" },
+];
+
+/* Skapa HTML för tidslinjen */
 const timeline = document.querySelector(".timeline");
+
+timeline.innerHTML = timelineData
+  .sort((a, b) => a.year - b.year)
+  .map(
+    (item) => `
+      <li class="timeline-item">
+      <span class="timeline-year">${item.year}</span>
+      <h3>${item.title}</h3>
+      <p>${item.description}</p>
+      </li>
+    `,
+  )
+  .join("");
+
 const timelineItems = document.querySelectorAll(".timeline-item");
+
+/* const timeline = document.querySelector(".timeline");
+const timelineItems = document.querySelectorAll(".timeline-item");
+ */
 
 // Slå på animationen (bara om JS fungerar)
 timeline.classList.add("animate");
