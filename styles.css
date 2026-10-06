@@ -217,6 +217,7 @@ h2 {
 button {
   font-family: inherit;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn,
