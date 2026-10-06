@@ -51,9 +51,9 @@ img {
   display: block;
 }
 
-/* Viktigt : gör så att hidden alltid döljer, även om vi sätter display på elementet */
+/* Osäker om jag ska ha kvar ( !important)? . Den gör så att hidden alltid döljer, även om vi sätter display på elementet */
 [hidden] {
-  display: none !important;
+  display: none;
 }
 
 /* header */

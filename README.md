@@ -8,4 +8,4 @@ Finns en knapp med mörkt läge funktion.
 
 En tidslinje där du skrollar neråt på sidan så blir den interaktiv.
 
-Den är användar vänlig, samt interaktiv med mindre skärmar ( telefon )
+Hemsidan är användarvänlig, samt interaktiv med mindre skärmar ( telefon )

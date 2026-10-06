@@ -15,7 +15,7 @@ readMoreBtn.addEventListener("click", () => {
   }
 });
 
-// FLIKAR
+// FLIKARNA
 
 // Hitta ALLA flikar och ALLA paneler
 const tabs = document.querySelectorAll(".tab");
