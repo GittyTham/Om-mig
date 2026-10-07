@@ -256,6 +256,14 @@ form button {
   color: var(--text);
   border-color: var(--border);
 }
+.btn-external::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  background-color: currentColor;
+  mask: url("icon-link.svg") center / contain no-repeat;
+}
 
 /* Syns när man tabbar med tangentbordet */
 :focus-visible {
