@@ -160,7 +160,7 @@ if (reduceMotion) {
 const form = document.querySelector("#contact-form");
 const formMessage = document.querySelector("#form-message");
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   // Stoppa omladdningen av sidan
   event.preventDefault();
 
@@ -169,18 +169,51 @@ form.addEventListener("submit", (event) => {
   const email = form.epost.value.trim();
   const message = form.meddelande.value.trim();
 
-  // om inte alla fält är ifyllda, visa felmeddelande
+  // Om inte alla fält är ifyllda, visa felmeddelande
   if (name === "" || email === "" || message === "") {
-    formMessage.textContent = "Fyll i alla fält, tack!";
-    formMessage.className = "form-message error";
+    showMessage("Fyll i alla fält, tack!", "error");
     return;
   }
 
-  // Fungerar allt så visas ett tackmeddelande och formuläret töms
-  formMessage.textContent = `Tack ${name}! Jag hör av mig snart.`;
-  formMessage.className = "form-message success";
-  form.reset();
+  // Kolla att e-posten ser rimlig ut (webbläsarens egen kontroll)
+  if (!form.epost.checkValidity()) {
+    showMessage("Kolla att e-postadressen är rätt skriven.", "error");
+    form.epost.focus();
+    return;
+  }
+
+  // Lås knappen medan vi skickar, så ingen dubbelklickar
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  button.textContent = "Skickar…";
+
+  try {
+    // Skicka till Formspree, som mejlar mig
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) throw new Error();
+
+    showMessage(`Tack ${name}! Jag hör av mig snart.`, "success");
+    form.reset();
+  } catch {
+    showMessage(
+      "Något gick fel. Prova igen eller kontakta mig på LinkedIn.",
+      "error",
+    );
+  } finally {
+    button.disabled = false;
+    button.textContent = "Skicka";
+  }
 });
+
+// Visa ett meddelande under formuläret
+function showMessage(text, type) {
+  formMessage.textContent = text;
+  formMessage.className = `form-message ${type}`;
+}
 
 // TIDSLINJEN
 const timelineData = [
