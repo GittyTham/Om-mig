@@ -148,7 +148,13 @@ function type() {
   setTimeout(type, delay);
 }
 
-type(); // Starta skrivmaskinen
+// Respektera "minska rörelse": visa ett ord direkt i stället för animationen
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (reduceMotion) {
+  typeEl.textContent = words[0];
+} else {
+  type(); // Starta skrivmaskinen
+}
 
 // KONTAKT FORMULÄR
 const form = document.querySelector("#contact-form");

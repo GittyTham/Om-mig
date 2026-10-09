@@ -411,6 +411,12 @@ form button {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+}
+
 /* Formulär meddelande */
 
 .form-message {
