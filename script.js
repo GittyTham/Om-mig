@@ -76,38 +76,6 @@ if (location.hash === "#kontakt") {
   showTab("kontakt");
 }
 
-// MÖRKT LÄGE
-const themeToggle = document.querySelector("#theme-toggle");
-
-// Startläge: sparat val eller systemets inställning
-try {
-  const saved = localStorage.getItem("theme");
-  const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
-  if (saved === "dark" || (!saved && prefersDark)) {
-    document.documentElement.classList.add("dark");
-  }
-} catch (e) {}
-
-// Visa rätt text på knappen
-function updateThemeButton() {
-  const isDark = document.documentElement.classList.contains("dark");
-  themeToggle.textContent = isDark ? "Ljust läge" : "Mörkt läge";
-  themeToggle.setAttribute("aria-pressed", isDark);
-}
-updateThemeButton();
-
-themeToggle.addEventListener("click", () => {
-  // Växla klassen "dark" på <html>
-  const isDark = document.documentElement.classList.toggle("dark");
-
-  // Spara valet så det finns kvar nästa gång
-  try {
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  } catch (e) {}
-
-  updateThemeButton();
-});
-
 // TYPEWRITER
 const words = ["UX-student", "kodare", "designer"];
 const typeEl = document.querySelector("#typewriter");
@@ -279,6 +247,7 @@ const projectData = [
       "Min egen sajt: tillgängliga flikar med tangentbordsnavigering, mörkt läge som följer systemet och responsiv layout i rem.",
     tags: ["HTML", "CSS", "JavaScript", "A11y"],
     link: "https://github.com/GittyTham/Om-mig",
+    caseLink: "projekt/om-mig.html",
   },
   {
     title: "Ahlsell × Hero2 hackathon",
@@ -313,7 +282,10 @@ projectGrid.innerHTML = projectData
         <ul class="project-tags">
           ${p.tags.map((tag) => `<li>${tag}</li>`).join("")}
         </ul>
-        ${p.link ? `<a href="${p.link}" class="btn btn-secondary btn-external" target="_blank" rel="noopener">Se koden</a>` : ""}
+        <div class="project-actions">
+          ${p.caseLink ? `<a href="${p.caseLink}" class="btn btn-primary">Läs caset</a>` : ""}
+          ${p.link ? `<a href="${p.link}" class="btn btn-secondary btn-external" target="_blank" rel="noopener">Se koden</a>` : ""}
+        </div>
       </li>
     `,
   )

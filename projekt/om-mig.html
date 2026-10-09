@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case: Om mig / Portfolio – Oliver Tham</title>
+    <meta
+      name="description"
+      content="Hur jag designade och byggde min portfolio: tillgängliga flikar, mörkt läge, rem-baserad layout och ett kontaktformulär som fungerar."
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://gittytham.github.io/Om-mig/projekt/om-mig.html"
+    />
+    <meta property="og:title" content="Case: Om mig / Portfolio – Oliver Tham" />
+    <meta
+      property="og:image"
+      content="https://gittytham.github.io/Om-mig/og-image.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../theme.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="../index.html" class="logo">thamam<span class="logo-dot">.</span></a>
+      <nav>
+        <a href="../index.html#projekt" aria-current="page">Projekt</a>
+        <a href="../index.html">Om mig</a>
+        <a href="../index.html#kontakt">Kontakt</a>
+        <button id="theme-toggle" type="button" aria-pressed="false">
+          Mörkt läge
+        </button>
+      </nav>
+    </header>
+
+    <main class="case">
+      <a href="../index.html#projekt" class="back-link">← Alla projekt</a>
+
+      <!-- INTRO -->
+      <header class="case-intro">
+        <p class="eyebrow">Case study</p>
+        <h1>Om mig / Portfolio</h1>
+        <p class="case-lead">
+          En personlig sajt som började som en skoluppgift och blev min
+          portfolio. Målet var att sajten själv skulle visa vad en UX Engineer
+          gör: tänka på användaren och bygga det ordentligt.
+        </p>
+
+        <dl class="case-facts">
+          <div>
+            <dt>Roll</dt>
+            <dd>Design &amp; kod (solo)</dd>
+          </div>
+          <div>
+            <dt>Tid</dt>
+            <dd>Hösten 2026</dd>
+          </div>
+          <div>
+            <dt>Verktyg</dt>
+            <dd>HTML, CSS, JavaScript, Git</dd>
+          </div>
+          <div>
+            <dt>Länkar</dt>
+            <dd>
+              <a
+                href="https://github.com/GittyTham/Om-mig"
+                target="_blank"
+                rel="noopener"
+                >Koden på GitHub</a
+              >
+            </dd>
+          </div>
+        </dl>
+      </header>
+
+      <figure class="case-figure">
+        <img
+          src="img/desktop-ljust.jpg"
+          alt="Startsidan i ljust läge: profilbild, namn och flikar för Om mig, Skills, Intressen och Kontakt."
+          width="1440"
+          height="900"
+        />
+      </figure>
+
+      <!-- UTMANINGEN -->
+      <section class="case-section" aria-labelledby="utmaningen">
+        <h2 id="utmaningen">Utmaningen</h2>
+        <p>
+          En "om mig"-sida är lätt att göra snygg men svår att göra bra. Jag
+          ville att den skulle fungera för alla: med mus, med tangentbord, på
+          mobil, i mörker och för den som blir illamående av animationer. Samma
+          sida skulle också gå att bygga vidare på när jag gör fler projekt.
+        </p>
+      </section>
+
+      <!-- BESLUT -->
+      <section class="case-section" aria-labelledby="beslut">
+        <h2 id="beslut">Viktiga beslut</h2>
+
+        <ol class="decision-list">
+          <li>
+            <h3>rem i stället för px</h3>
+            <p>
+              Med rem växer hela layouten med användarens textstorlek i
+              webbläsaren, inte bara texten. Undantaget är tunna kanter (1–3px)
+              som ska se exakt likadana ut överallt.
+            </p>
+          </li>
+          <li>
+            <h3>Flikar som fungerar med tangentbord</h3>
+            <p>
+              Fyra flikar i stället för en lång sida. De följer WAI-ARIA-mönstret
+              med <code>role="tablist"</code>, <code>aria-selected</code> och
+              <code>aria-controls</code>. Piltangenter, Home och End flyttar
+              mellan flikarna, och varje flik går också att nå med Tab.
+            </p>
+          </li>
+          <li>
+            <h3>Mörkt läge som minns ditt val</h3>
+            <p>
+              Första besöket följer systemets inställning
+              (<code>prefers-color-scheme</code>). Väljer du själv sparas valet.
+              Alla färger är CSS-variabler, så en klass på
+              <code>&lt;html&gt;</code> byter hela temat.
+            </p>
+          </li>
+          <li>
+            <h3>Mobil på riktigt</h3>
+            <p>
+              Jag testade på iPhone 15 Pro-bredd (393px). Menyn radbryts,
+              knapparna bryts inte mitt i ord och flikarna blir ett 2×2-rutnät
+              så de går att träffa med tummen.
+            </p>
+          </li>
+          <li>
+            <h3>Innehåll som data</h3>
+            <p>
+              Tidslinjen och projektkorten byggs från listor i JavaScript. Ett
+              nytt projekt är ett nytt objekt i listan, ingen ny HTML.
+              Tidslinjen sorterar sig själv efter år.
+            </p>
+          </li>
+          <li>
+            <h3>Rörelse med hänsyn</h3>
+            <p>
+              Tidslinjen tonar in när man scrollar och rubriken skrivs ut som en
+              skrivmaskin. Båda stängs av om användaren har valt "minska
+              rörelse" i systemet.
+            </p>
+          </li>
+          <li>
+            <h3>Ett formulär som faktiskt skickar</h3>
+            <p>
+              Första versionen sa "Tack!" men skickade ingenting. Nu går
+              meddelandet via Formspree, e-posten valideras, knappen låses
+              medan det skickas och texten ligger kvar om något går fel.
+              Svaret läses upp av skärmläsare via <code>role="status"</code>.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <div class="case-gallery">
+        <figure class="case-figure">
+          <img
+            src="img/desktop-morkt.jpg"
+            alt="Samma startsida i mörkt läge."
+            width="1440"
+            height="900"
+            loading="lazy"
+          />
+          <figcaption>Mörkt läge följer systemet första gången.</figcaption>
+        </figure>
+        <figure class="case-figure case-figure--phone">
+          <img
+            src="img/mobil.jpg"
+            alt="Startsidan på mobil, med flikarna som ett 2×2-rutnät."
+            width="786"
+            height="1704"
+            loading="lazy"
+          />
+          <figcaption>Mobil, 393px bred.</figcaption>
+        </figure>
+      </div>
+
+      <!-- LÄRDOMAR -->
+      <section class="case-section" aria-labelledby="lardomar">
+        <h2 id="lardomar">Vad jag lärde mig</h2>
+        <p>
+          Tillgänglighet är mest många små beslut: en roll här, ett attribut
+          där. Men skillnaden märks direkt när man försöker använda sidan med
+          bara tangentbordet. Jag lärde mig också att en kodgranskning hittar
+          saker man själv blivit blind för, som att formuläret aldrig skickade
+          något.
+        </p>
+      </section>
+
+      <!-- NÄSTA STEG -->
+      <section class="case-section" aria-labelledby="nasta-steg">
+        <h2 id="nasta-steg">Nästa steg</h2>
+        <ul class="next-list">
+          <li>Testa hela sidan med VoiceOver</li>
+          <li>Lägga till en "hoppa till innehåll"-länk</li>
+          <li>Låta tre personer testa sidan och se var de fastnar</li>
+        </ul>
+      </section>
+
+      <a href="../index.html#projekt" class="btn btn-secondary">← Tillbaka till projekten</a>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Oliver Tham</p>
+    </footer>
+  </body>
+</html>
