@@ -229,3 +229,53 @@ const observer = new IntersectionObserver(
 
 // Be obesrvtören titta på varje punkt i tidslinjen
 timelineItems.forEach((item) => observer.observe(item));
+
+// PROJEKT
+const projectData = [
+  {
+    title: "Om mig / Portfolio",
+    status: "Klar",
+    role: "Design & kod",
+    description:
+      "Min egen sajt: tillgängliga flikar med tangentbordsnavigering, mörkt läge som följer systemet och responsiv layout i rem.",
+    tags: ["HTML", "CSS", "JavaScript", "A11y"],
+    link: "https://github.com/GittyTham/Om-mig",
+  },
+  {
+    title: "Ahlsell × Hero2 hackathon",
+    status: "Pågående",
+    role: "UX & prototyp",
+    description:
+      "En app som gör om byggritningar till materiallistor och offerter.",
+    tags: ["Figma", "UX", "Teamwork"],
+    link: "",
+  },
+  {
+    title: "Sogeti hackathon – AI-chattbot",
+    status: "Klar",
+    role: "Promptdesign",
+    description:
+      "Vi tränade en AI-chattbot att anta olika personligheter, till exempel en riktigt norrländsk bot med egna uttryck, så att den svarade i karaktär oavsett vad man frågade.",
+    tags: ["AI", "Promptdesign", "Teamwork"],
+    link: "",
+  },
+];
+
+const projectGrid = document.querySelector(".project-grid");
+
+projectGrid.innerHTML = projectData
+  .map(
+    (p) => `
+      <li class="project-card">
+        <span class="project-status">${p.status}</span>
+        <h3>${p.title}</h3>
+        <p class="project-role">${p.role}</p>
+        <p>${p.description}</p>
+        <ul class="project-tags">
+          ${p.tags.map((tag) => `<li>${tag}</li>`).join("")}
+        </ul>
+        ${p.link ? `<a href="${p.link}" class="btn btn-secondary btn-external" target="_blank" rel="noopener">Se koden</a>` : ""}
+      </li>
+    `,
+  )
+  .join("");

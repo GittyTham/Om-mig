@@ -426,6 +426,77 @@ form button {
   color: var(--success);
 }
 
+/* Projekt */
+.projects-section {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+}
+
+.project-grid {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.project-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.project-card p {
+  margin: 0;
+}
+
+.project-status {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-role {
+  color: var(--muted);
+}
+
+.project-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tags li {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.project-card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
 /* tids linje */
 
 .timeline-section {
@@ -508,6 +579,10 @@ form button {
 @media (max-width: 50em) {
   .timeline-section {
     padding: 1rem 1.25rem 4rem;
+  }
+
+  .projects-section {
+    padding: 1rem 1.25rem;
   }
 
   .tabs {
