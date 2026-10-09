@@ -15,7 +15,10 @@
 
     <!-- Förhandsvisning när länken delas (LinkedIn) -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://gittytham.github.io/Om-mig/" />
+    <meta
+      property="og:url"
+      content="https://gittytham.github.io/Om-mig-inlamning/"
+    />
     <meta property="og:title" content="Oliver Tham – UX Engineer-student" />
     <meta
       property="og:description"
@@ -23,7 +26,7 @@
     />
     <meta
       property="og:image"
-      content="https://gittytham.github.io/Om-mig/og-image.jpg"
+      content="https://gittytham.github.io/Om-mig-inlamning/og-image.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -36,16 +39,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <!--  mörkt läge direkt, innan sidan öppnas, så den inte blinkar vitt -->
-    <script>
-      try {
-        const saved = localStorage.getItem("theme");
-        const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
-        if (saved === "dark" || (!saved && prefersDark)) {
-          document.documentElement.classList.add("dark");
-        }
-      } catch (e) {}
-    </script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -63,203 +56,196 @@
       </nav>
     </header>
 
-    <main class="layout">
-      <!-- Vänster spalten: profil -->
-      <section class="profile">
-        <img
-          src="Oliver-profil.jpg"
-          alt="Porträtt av Oliver Tham"
-          class="profile-img"
-        />
-        <p class="eyebrow">Hej, jag heter</p>
-        <h1>Oliver Tham</h1>
-        <p class="role" aria-label="Jag är UX-student, kodare och designer">
-          <span aria-hidden="true"
-            >Jag är <span id="typewriter"></span
-            ><span class="cursor">|</span></span
-          >
-        </p>
-        <p class="intro">
-          UX Engineer-student på Chas Academy. Jag bygger gränssnitt som är
-          lätta att förstå och trevliga att använda.
-        </p>
-        <p class="location">Stockholm</p>
-        <div class="buttons">
-          <a href="#kontakt" class="btn btn-primary">Kontakta mig</a>
-          <a
-            href="https://github.com/GittyTham"
-            class="btn btn-secondary btn-external"
-            target="_blank"
-            rel="noopener"
-            >Se mina projekt</a
-          >
-          <a
-            href="https://www.linkedin.com/in/oliver-tham-765064226/"
-            class="btn btn-secondary btn-external"
-            target="_blank"
-            rel="noopener"
-            >LinkedIn</a
-          >
-        </div>
-      </section>
-
-      <!-- Höger spalt - flikar -->
-      <section class="content">
-        <div class="tabs" role="tablist" aria-label="Om mig">
-          <button
-            class="tab active"
-            data-tab="om"
-            id="tab-om"
-            aria-controls="om"
-            role="tab"
-            aria-selected="true"
-          >
-            Om mig
-          </button>
-          <button
-            class="tab"
-            data-tab="skills"
-            id="tab-skills"
-            aria-controls="skills"
-            role="tab"
-            aria-selected="false"
-          >
-            Skills
-          </button>
-          <button
-            class="tab"
-            data-tab="intressen"
-            id="tab-intressen"
-            aria-controls="intressen"
-            role="tab"
-            aria-selected="false"
-          >
-            Intressen
-          </button>
-          <button
-            class="tab"
-            data-tab="kontakt"
-            id="tab-kontakt"
-            aria-controls="kontakt"
-            role="tab"
-            aria-selected="false"
-          >
-            Kontakt
-          </button>
-        </div>
-
-        <div
-          class="panel"
-          id="om"
-          role="tabpanel"
-          aria-labelledby="tab-om"
-          tabindex="0"
-        >
-          <h2>Lite om mig</h2>
-          <p>
-            Jag pluggar till UX Engineer och gillar mötet mellan design och kod.
+    <main>
+      <div class="layout">
+        <!-- Vänster spalten: profil -->
+        <section class="profile">
+          <img
+            src="Oliver-profil.jpg"
+            alt="Porträtt av Oliver Tham"
+            class="profile-img"
+          />
+          <p class="eyebrow">Hej, jag heter</p>
+          <h1>Oliver Tham</h1>
+          <p class="role">
+            <span class="visually-hidden"
+              >Jag är UX-student, kodare och designer</span
+            >
+            <span aria-hidden="true"
+              >Jag är <span id="typewriter"></span
+              ><span class="cursor">|</span></span
+            >
           </p>
-          <!-- Visa mer class/button -->
-          <p class="more-text" hidden>
-            Jag har gjort/varit med på två hackathons. Ett var med Chas och ett
-            var med företaget Sogeti.
+          <p class="intro">
+            UX Engineer-student på Chas Academy. Jag bygger gränssnitt som är
+            lätta att förstå och trevliga att använda.
           </p>
-          <button id="read-more" type="button" aria-expanded="false">
-            Läs mer
-          </button>
-        </div>
-        <div
-          class="panel"
-          id="skills"
-          role="tabpanel"
-          aria-labelledby="tab-skills"
-          tabindex="0"
-          hidden
-        >
-          <h2>Det jag jobbar med</h2>
-          <ul class="skill-list">
-            <li>HTML - Grundläggande</li>
-            <li>CSS - Grundläggande</li>
-            <li>JavaScript - Lär mig nu</li>
-            <li>C# - Grundläggande</li>
-            <li>Java - Grundläggande</li>
-          </ul>
-        </div>
-        <div
-          class="panel"
-          id="intressen"
-          role="tabpanel"
-          aria-labelledby="tab-intressen"
-          tabindex="0"
-          hidden
-        >
-          <h2>Utanför studierna</h2>
-          <ul class="interest-list">
-            <li>Spela dataspel</li>
-            <li>Umgås med kompisar</li>
-            <li>Kolla på film</li>
-            <li>Laga mat</li>
-          </ul>
-        </div>
+          <p class="location">Stockholm</p>
+          <div class="buttons">
+            <a href="#kontakt" class="btn btn-primary">Kontakta mig</a>
+            <a
+              href="https://github.com/GittyTham"
+              class="btn btn-secondary btn-external"
+              target="_blank"
+              rel="noopener"
+              >Se mina projekt</a
+            >
+            <a
+              href="https://www.linkedin.com/in/oliver-tham-765064226/"
+              class="btn btn-secondary btn-external"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </div>
+        </section>
 
-        <div
-          class="panel"
-          id="kontakt"
-          role="tabpanel"
-          aria-labelledby="tab-kontakt"
-          tabindex="0"
-          hidden
-        >
-          <h2>Säg hej</h2>
-          <form id="contact-form" novalidate>
-            <label for="namn">Namn</label>
-            <input type="text" id="namn" name="namn" required />
+        <!-- Höger spalt - flikar -->
+        <section class="content">
+          <div class="tabs" role="tablist" aria-label="Om mig">
+            <button
+              class="tab active"
+              data-tab="om"
+              id="tab-om"
+              aria-controls="om"
+              role="tab"
+              aria-selected="true"
+            >
+              Om mig
+            </button>
+            <button
+              class="tab"
+              data-tab="skills"
+              id="tab-skills"
+              aria-controls="skills"
+              role="tab"
+              aria-selected="false"
+            >
+              Skills
+            </button>
+            <button
+              class="tab"
+              data-tab="intressen"
+              id="tab-intressen"
+              aria-controls="intressen"
+              role="tab"
+              aria-selected="false"
+            >
+              Intressen
+            </button>
+            <button
+              class="tab"
+              data-tab="kontakt"
+              id="tab-kontakt"
+              aria-controls="kontakt"
+              role="tab"
+              aria-selected="false"
+            >
+              Kontakt
+            </button>
+          </div>
 
-            <label for="epost">E-post</label>
-            <input type="email" name="epost" id="epost" required />
+          <div
+            class="panel"
+            id="om"
+            role="tabpanel"
+            aria-labelledby="tab-om"
+            tabindex="0"
+          >
+            <h2>Lite om mig</h2>
+            <img
+              src="chas-logo.png"
+              alt="Chas Academy logo"
+              class="about-img"
+            />
+            <p>
+              Jag pluggar till UX Engineer och gillar mötet mellan design och
+              kod.
+            </p>
+            <!-- Visa mer class/button -->
+            <p class="more-text" hidden>
+              Jag har gjort/varit med på två hackathons. Ett var med Chas och
+              ett var med företaget Sogeti.
+            </p>
+            <button id="read-more" type="button" aria-expanded="false">
+              Läs mer
+            </button>
+          </div>
+          <div
+            class="panel"
+            id="skills"
+            role="tabpanel"
+            aria-labelledby="tab-skills"
+            tabindex="0"
+            hidden
+          >
+            <h2>Det jag jobbar med</h2>
+            <ul class="skill-list">
+              <li>HTML - Grundläggande</li>
+              <li>CSS - Grundläggande</li>
+              <li>JavaScript - Lär mig nu</li>
+              <li>C# - Grundläggande</li>
+              <li>Java - Grundläggande</li>
+            </ul>
+          </div>
+          <div
+            class="panel"
+            id="intressen"
+            role="tabpanel"
+            aria-labelledby="tab-intressen"
+            tabindex="0"
+            hidden
+          >
+            <h2>Utanför studierna</h2>
+            <ul class="interest-list">
+              <li>Spela dataspel</li>
+              <li>Umgås med kompisar</li>
+              <li>Kolla på film</li>
+              <li>Laga mat</li>
+            </ul>
+          </div>
 
-            <label for="meddelande">Meddelande</label>
-            <textarea
-              id="meddelande"
-              name="meddelande"
-              rows="4"
-              required
-            ></textarea>
+          <div
+            class="panel"
+            id="kontakt"
+            role="tabpanel"
+            aria-labelledby="tab-kontakt"
+            tabindex="0"
+            hidden
+          >
+            <h2>Säg hej</h2>
+            <form id="contact-form" novalidate>
+              <label for="namn">Namn</label>
+              <input type="text" id="namn" name="namn" required />
 
-            <button type="submit">Skicka</button>
-            <p id="form-message" class="form-message" role="status"></p>
-          </form>
-        </div>
+              <label for="epost">E-post</label>
+              <input type="email" name="epost" id="epost" required />
+
+              <label for="meddelande">Meddelande</label>
+              <textarea
+                id="meddelande"
+                name="meddelande"
+                rows="4"
+                required
+              ></textarea>
+
+              <button type="submit">Skicka</button>
+              <p id="form-message" class="form-message" role="status"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <!-- TIMELINE -->
+      <section class="timeline-section">
+        <h2>Min resa</h2>
+
+        <ol class="timeline"></ol>
       </section>
     </main>
-    <!-- TIMELINE -->
-    <section class="timeline-section">
-      <h2>Min resa</h2>
 
-      <ol class="timeline"></ol>
-      <!-- <li class="timeline-item">
-          <span class="timeline-year">2021</span>
-          <h3>Jobbade på Myrsjöskolan</h3>
-          <p>Fritidspedagog och extra stöd</p>
-        </li>
-
-        <li class="timeline-item">
-          <span class="timeline-year">2025</span>
-          <h3>Umeå Universitet</h3>
-          <p>Lärde mig C#</p>
-        </li>
-
-        <li class="timeline-item">
-          <span class="timeline-year">2025</span>
-          <h3>Gävle Universitet</h3>
-          <p>Lärde mig Java</p>
-        </li>
-
-        <li class="timeline-item">
-          <span class="timeline-year">2026</span>
-          <h3>Började på Chas Academy</h3>
-          <p>Startade på UX Engineer-utbildningen</p>
-        </li> -->
-    </section>
+    <footer class="site-footer">
+      <p>© 2026 Oliver Tham</p>
+    </footer>
   </body>
 </html>

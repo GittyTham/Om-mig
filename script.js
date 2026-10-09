@@ -77,8 +77,16 @@ if (location.hash === "#kontakt") {
 }
 
 // MÖRKT LÄGE
-// (Själva startläget sätts redan i <head> så sidan inte blinkar)
 const themeToggle = document.querySelector("#theme-toggle");
+
+// Startläge: sparat val eller systemets inställning
+try {
+  const saved = localStorage.getItem("theme");
+  const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+  if (saved === "dark" || (!saved && prefersDark)) {
+    document.documentElement.classList.add("dark");
+  }
+} catch (e) {}
 
 // Visa rätt text på knappen
 function updateThemeButton() {
@@ -121,7 +129,7 @@ function type() {
   // Visa ordet med rätt antal bokstäver
   typeEl.textContent = currentWord.slice(0, letterIndex);
 
-  // Hur länge ska vi vänta till nästa bokstav? Snabbare när vi suddar
+  // Hur lång tid ska vi vänta innan nästa bokstav? Sudda snabbare än skriva
   let delay = isDeleting ? 60 : 120;
 
   // Är ordet helt skrivet? Vänta lite och börja sudda
@@ -136,7 +144,7 @@ function type() {
     delay = 400;
   }
 
-  // Kör funktionen igen efter "delay" millisekunder
+  // Kör funktionen igen efter "delay"
   setTimeout(type, delay);
 }
 
@@ -155,14 +163,14 @@ form.addEventListener("submit", (event) => {
   const email = form.epost.value.trim();
   const message = form.meddelande.value.trim();
 
-  // Har vi alla fält? Om inte, visa felmeddelande och returnera
+  // om inte alla fält är ifyllda, visa felmeddelande
   if (name === "" || email === "" || message === "") {
     formMessage.textContent = "Fyll i alla fält, tack!";
     formMessage.className = "form-message error";
     return;
   }
 
-  // Allt fungerar, visa tackmeddelande och töm formuläret
+  // Fungerar allt så visas ett tackmeddelande och formuläret töms
   formMessage.textContent = `Tack ${name}! Jag hör av mig snart.`;
   formMessage.className = "form-message success";
   form.reset();
@@ -201,10 +209,6 @@ timeline.innerHTML = timelineData
   .join("");
 
 const timelineItems = document.querySelectorAll(".timeline-item");
-
-/* const timeline = document.querySelector(".timeline");
-const timelineItems = document.querySelectorAll(".timeline-item");
- */
 
 // Slå på animationen (bara om JS fungerar)
 timeline.classList.add("animate");

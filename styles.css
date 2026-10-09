@@ -51,7 +51,6 @@ img {
   display: block;
 }
 
-/* Osäker om jag ska ha kvar ( !important)? . Den gör så att hidden alltid döljer, även om vi sätter display på elementet */
 [hidden] {
   display: none;
 }
@@ -72,7 +71,7 @@ img {
 /* Huvud layout - två spalter */
 .layout {
   display: grid;
-  grid-template-columns: 23.75rem 1fr;
+  grid-template-columns: 23.75rem minmax(0, 1fr);
   gap: 4rem;
   max-width: 80rem;
   margin: 0 auto;
@@ -94,6 +93,7 @@ img {
 .buttons {
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 /* Höger - flikar */
@@ -106,6 +106,7 @@ img {
 .tabs {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .panel {
@@ -139,10 +140,6 @@ form {
   .site-header nav {
     flex-wrap: wrap;
     gap: 1rem;
-  }
-
-  .buttons {
-    flex-wrap: wrap;
   }
 
   .panel {
@@ -295,7 +292,6 @@ form button {
 }
 
 .tab:hover {
-  /* background: var(--btn-bg); */
   color: var(--text);
 }
 
@@ -347,19 +343,21 @@ form button {
   font-weight: 600;
 }
 
-/* INTRESSEN SOM "PILLER" */
+/* INTRESSEN */
 .interest-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 .interest-list li {
-  padding: 0.75rem 1.25rem;
+  padding: 1.25rem 1.25rem;
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 1rem;
+  font-weight: 600;
 }
 /* FORMULÄR */
 label {
@@ -384,8 +382,10 @@ form button {
   border: 0;
 }
 
+/* MOBIL */
 @media (max-width: 50em) {
-  .skill-list {
+  .skill-list,
+  .interest-list {
     grid-template-columns: 1fr;
   }
 }
@@ -496,7 +496,7 @@ form button {
   transform: none;
 }
 
-/* Respektera användare som vill ha mindre rörelse */
+/*  användare som vill ha mindre rörelse */
 @media (prefers-reduced-motion: reduce) {
   .timeline.animate .timeline-item {
     opacity: 1;
@@ -516,4 +516,33 @@ form button {
     align-self: stretch;
     border-radius: var(--radius);
   }
+}
+
+/* Bild i Om mig-panelen */
+.about-img {
+  width: 100%;
+  max-width: 10rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Text för de med skärmläsare  */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
