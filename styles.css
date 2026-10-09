@@ -432,6 +432,16 @@ form button {
   color: var(--success);
 }
 
+/* Rubriker i Skills-fliken */
+.skill-heading {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 /* Projekt */
 .projects-section {
   max-width: 80rem;
@@ -482,7 +492,8 @@ form button {
   color: var(--muted);
 }
 
-.project-tags {
+.project-tags,
+.tool-list {
   list-style: none;
   padding: 0;
   margin: 0.5rem 0;
@@ -491,7 +502,8 @@ form button {
   gap: 0.5rem;
 }
 
-.project-tags li {
+.project-tags li,
+.tool-list li {
   font-size: 0.875rem;
   padding: 0.25rem 0.75rem;
   border: 1px solid var(--border);
